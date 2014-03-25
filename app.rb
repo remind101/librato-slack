@@ -7,19 +7,31 @@ SLACK_TOKEN   = ENV['SLACK_TOKEN']
 
 class App < Grape::API
   helpers do
-    def payload
-      @payload ||= Hashie::Mash.new JSON.parse(params.payload)
+    def alert
+      @alert ||= Hashie::Mash.new JSON.parse(params.payload)
     end
   end
 
   post do
-    p payload
+    p alert
 
-    attachment = {
-      color: '#f00'
+    payload = {
+      username: 'Librato',
+      text: "Alert #{alert.alert.name} has triggered!"
     }
 
-    HTTParty.post "https://#{SLACK_ACCOUNT}.slack.com",
-      body: "payload=#{JSON.dump(attachments: [attachment])}"
+    payload[:attachments] = alert.violations.map do |source, violations|
+      fields = []
+      fields << { title: 'Source', value: source }
+
+      violations.each do |violation|
+        fields << { title: violation.metric, value: violation.value, short: true }
+      end
+
+      { fields: fields }
+    end
+
+    HTTParty.post "https://#{SLACK_ACCOUNT}.slack.com/services/hooks/incoming-webhook?token=#{SLACK_TOKEN}",
+      body: "payload=#{JSON.dump(payload)}"
   end
 end

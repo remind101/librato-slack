@@ -1,6 +1,6 @@
-ENV['RACK_ENV']      = 'test'
-ENV['SLACK_ACCOUNT'] = 'test'
-ENV['SLACK_TOKEN']   = '1234'
+ENV['RACK_ENV']        = 'test'
+ENV['SLACK_ACCOUNT'] ||= 'test'
+ENV['SLACK_TOKEN']   ||= '1234'
 
 require_relative '../app.rb'
 Bundler.require :default, :test
