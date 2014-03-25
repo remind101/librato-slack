@@ -2,9 +2,6 @@ require 'bundler/setup'
 Bundler.require :default, ENV['RACK_ENV']
 require 'json'
 
-SLACK_ACCOUNT = ENV['SLACK_ACCOUNT']
-SLACK_TOKEN   = ENV['SLACK_TOKEN']
-
 class App < Grape::API
   helpers do
     def alert
@@ -13,8 +10,6 @@ class App < Grape::API
   end
 
   post do
-    p alert
-
     payload = {
       username: 'Librato',
       text: "Alert #{alert.alert.name} has triggered!"
@@ -31,7 +26,7 @@ class App < Grape::API
       { fields: fields }
     end
 
-    HTTParty.post "https://#{SLACK_ACCOUNT}.slack.com/services/hooks/incoming-webhook?token=#{SLACK_TOKEN}",
+    HTTParty.post "https://#{params.account}.slack.com/services/hooks/incoming-webhook?token=#{params.token}",
       body: "payload=#{JSON.dump(payload)}"
   end
 end

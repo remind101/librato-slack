@@ -13,6 +13,6 @@ describe App do
   end
 
   it 'creates a slack attachment' do
-    post '/', File.read(File.expand_path('../fixtures/alert.txt', __FILE__))
+    post '/?account=test&token=1234', File.read(File.expand_path('../fixtures/alert.txt', __FILE__))
   end
 end
