@@ -13,7 +13,13 @@ describe App do
 
   describe 'librato' do
     it 'sends a message', :vcr do
-      post '/librato?account=test&token=1234', File.read(File.expand_path('../fixtures/alert.txt', __FILE__))
+      post '/librato?account=test&token=1234', File.read(File.expand_path('../fixtures/librato/alert.txt', __FILE__))
+    end
+  end
+
+  describe 'papertrail' do
+    it 'sends a message', :vcr do
+      post '/papertrail?account=test&token=1234', File.read(File.expand_path('../fixtures/papertrail/event.txt', __FILE__))
     end
   end
 end

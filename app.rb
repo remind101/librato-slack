@@ -3,6 +3,7 @@ Bundler.require :default, ENV['RACK_ENV']
 require 'json'
 
 require_relative './services/librato'
+require_relative './services/papertrail'
 
 class App < Grape::API
   helpers do
@@ -18,4 +19,5 @@ class App < Grape::API
   end
 
   mount Librato
+  mount Papertrail
 end
