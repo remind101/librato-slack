@@ -23,8 +23,7 @@ class Librato < Grape::API
         { fields: fields }
       end
 
-      HTTParty.post "https://#{params.account}.slack.com/services/hooks/incoming-webhook?token=#{params.token}",
-        body: "payload=#{JSON.dump(payload)}"
+      post payload
     end
   end
 end
