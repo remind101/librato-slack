@@ -16,6 +16,7 @@ VCR.config do |config|
     allow_unused_http_interactions: false,
   }
   config.stub_with :webmock
+  config.configure_rspec_metadata!
 end
 
 RSpec.configure do |config|
@@ -23,4 +24,5 @@ RSpec.configure do |config|
   config.filter_run :focus => true
   config.run_all_when_everything_filtered = true
   config.extend VCR::RSpec::Macros
+  config.treat_symbols_as_metadata_keys_with_true_values = true
 end
