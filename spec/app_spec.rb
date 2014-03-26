@@ -13,7 +13,7 @@ describe App do
 
   describe 'librato' do
     it 'sends a message', :vcr do
-      post '/?account=test&token=1234', File.read(File.expand_path('../fixtures/alert.txt', __FILE__))
+      post '/librato?account=test&token=1234', File.read(File.expand_path('../fixtures/alert.txt', __FILE__))
     end
   end
 end
