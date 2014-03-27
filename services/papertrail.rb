@@ -7,9 +7,11 @@ class Papertrail < Grape::API
     end
 
     post do
+      title = "Search <#{event.saved_search.html_search_url}|#{event.saved_search.name}> has triggered!\n"
+
       payload = {
         username: 'Papertrail',
-        text: event.events.map { |event| "#{event.hostname}: #{event.message}" }.join("\n")
+        text: title + event.events.map { |event| "#{event.hostname}: #{event.message}" }.join("\n")
       }
 
       post payload
