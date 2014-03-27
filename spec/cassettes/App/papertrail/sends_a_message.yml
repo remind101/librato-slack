@@ -5,11 +5,11 @@ http_interactions:
     uri: https://test.slack.com/services/hooks/incoming-webhook?token=1234
     body:
       encoding: UTF-8
-      string: 'payload={"username":"Papertrail","text":"Search <https://papertrailapp.com/searches/1678083|trigger
-        email notification> has triggered!\nr101-api: notify=email id=928895 subscriber
-        counts do not match \nr101-api: notify=email id=936321 subscriber counts do
-        not match \nr101-api: notify=email id=965423 subscriber counts do not match
-        "}'
+      string: payload={"username":"Papertrail","text":"Search <https://papertrailapp.com/searches/1678083|trigger
+        email notification> has triggered!","attachments":[{"fields":[{"title":"r101-api","value":"notify=email
+        id=928895 subscriber counts do not match "}]},{"fields":[{"title":"r101-api","value":"notify=email
+        id=936321 subscriber counts do not match "}]},{"fields":[{"title":"r101-api","value":"notify=email
+        id=965423 subscriber counts do not match "}]}]}
     headers: {}
   response:
     status:
@@ -21,7 +21,7 @@ http_interactions:
       Content-Type:
       - text/html
       Date:
-      - Thu, 27 Mar 2014 19:36:55 GMT
+      - Thu, 27 Mar 2014 19:42:26 GMT
       Server:
       - Apache
       Vary:
@@ -36,5 +36,5 @@ http_interactions:
       encoding: UTF-8
       string: No hooks
     http_version: 
-  recorded_at: Thu, 27 Mar 2014 19:36:59 GMT
+  recorded_at: Thu, 27 Mar 2014 19:42:29 GMT
 recorded_with: VCR 2.8.0
