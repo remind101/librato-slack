@@ -8,6 +8,7 @@ require_relative './services/papertrail'
 class App < Grape::API
   helpers do
     def post(payload)
+      payload[:channel] = params.channel if params.channel?
       HTTParty.post "https://#{params.account}.slack.com/services/hooks/incoming-webhook?token=#{params.token}",
         body: "payload=#{JSON.dump(payload)}"
     end
@@ -16,6 +17,7 @@ class App < Grape::API
   params do
     requires :account
     requires :token
+    optional :channel
   end
 
   mount Librato
