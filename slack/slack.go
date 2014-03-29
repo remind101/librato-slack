@@ -16,16 +16,16 @@ type Attachment struct {
 	Fields []Field `json:"fields"`
 }
 
-type Payload struct {
+type Message struct {
 	Username    string	 `json:"username"`
 	Text	    string	 `json:"text"`
 	Attachments []Attachment `json:"attachments"`
 }
 
-func Post(account string, token string, payload Payload) (*http.Response, error) {
+func Post(account string, token string, message Message) (*http.Response, error) {
 	url := "https://" + account + ".slack.com/services/hooks/incoming-webhook?token=" + token
 
-	json, err := json.Marshal(payload)
+	json, err := json.Marshal(message)
 
 	if err != nil {
 		return nil, err
