@@ -1,11 +1,11 @@
 package main
 
-import(
-	"net/http"
+import (
 	"github.com/codegangsta/martini"
-	"github.com/remind101/slack-hooks/slack"
 	"github.com/remind101/slack-hooks/services"
 	"github.com/remind101/slack-hooks/services/papertrail"
+	"github.com/remind101/slack-hooks/slack"
+	"net/http"
 )
 
 func main() {
@@ -20,7 +20,7 @@ func main() {
 			message := handler.Handle(handler.Parse(req.FormValue("payload")))
 
 			account := req.FormValue("account")
-			token   := req.FormValue("token")
+			token := req.FormValue("token")
 
 			go slack.Post(account, token, message)
 		})

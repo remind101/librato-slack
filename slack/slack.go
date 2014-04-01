@@ -1,9 +1,9 @@
 package slack
 
-import(
+import (
+	"bytes"
 	"encoding/json"
 	"net/http"
-	"bytes"
 	//"strings"
 )
 
@@ -17,8 +17,8 @@ type Attachment struct {
 }
 
 type Message struct {
-	Username    string	 `json:"username"`
-	Text	    string	 `json:"text"`
+	Username    string       `json:"username"`
+	Text        string       `json:"text"`
 	Attachments []Attachment `json:"attachments"`
 }
 

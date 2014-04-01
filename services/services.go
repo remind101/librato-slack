@@ -1,6 +1,6 @@
 package services
 
-import(
+import (
 	"github.com/remind101/slack-hooks/slack"
 )
 

@@ -1,6 +1,6 @@
 package papertrail
 
-import(
+import (
 	"encoding/json"
 	"github.com/remind101/slack-hooks/slack"
 )
@@ -30,6 +30,6 @@ func (s *Service) Parse(input string) interface{} {
 func (s *Service) Handle(payload interface{}) *slack.Message {
 	return &slack.Message{
 		Username: "Papertrail",
-		Text: "Search",
+		Text:     "Search",
 	}
 }
