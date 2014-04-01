@@ -17,7 +17,7 @@ type Payload struct {
 type Service struct {
 }
 
-func (s *Service) Parse(input string) *Payload {
+func (s *Service) Parse(input string) interface{} {
 	payload := &Payload{}
 
 	if err := json.Unmarshal([]byte(input), payload); err != nil {
@@ -27,7 +27,7 @@ func (s *Service) Parse(input string) *Payload {
 	return payload
 }
 
-func (s *Service) Handle(payload *Payload) *slack.Message {
+func (s *Service) Handle(payload interface{}) *slack.Message {
 	return &slack.Message{
 		Username: "Papertrail",
 		Text: "Search",

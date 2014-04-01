@@ -5,6 +5,6 @@ import(
 )
 
 type Service interface {
-	Parse() interface{}
-	Handle(*interface{}) *slack.Message
+	Parse(string) interface{}
+	Handle(interface{}) *slack.Message
 }
