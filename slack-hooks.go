@@ -17,7 +17,7 @@ func main() {
 
 	for path, handler := range handlers {
 		m.Post(path, func(res http.ResponseWriter, req *http.Request, c martini.Context) {
-			message := handler.Handle(handler.Parse())
+			message := handler.Handle(handler.Parse(req.FormValue("payload")))
 
 			account := req.FormValue("account")
 			token   := req.FormValue("token")
