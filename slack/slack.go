@@ -22,7 +22,7 @@ type Message struct {
 	Attachments []Attachment `json:"attachments"`
 }
 
-func Post(account string, token string, message Message) (*http.Response, error) {
+func Post(account string, token string, message *Message) (*http.Response, error) {
 	url := "https://" + account + ".slack.com/services/hooks/incoming-webhook?token=" + token
 
 	json, err := json.Marshal(message)
