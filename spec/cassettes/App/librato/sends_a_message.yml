@@ -5,7 +5,7 @@ http_interactions:
     uri: https://test.slack.com/services/hooks/incoming-webhook?token=1234
     body:
       encoding: UTF-8
-      string: payload={"username":"Librato","text":"Alert test has triggered!","attachments":[{"fields":[{"title":"Source","value":"r101-dashboard-beta-production"},{"title":"router.service.perc95","value":412,"short":true}]},{"fields":[{"title":"Source","value":"r101-events-production"},{"title":"router.service.perc95","value":446,"short":true}]},{"fields":[{"title":"Source","value":"r101-marketing-production"},{"title":"router.service.perc95","value":531,"short":true}]},{"fields":[{"title":"Source","value":"r101-pdf-production"},{"title":"router.service.perc95","value":1294,"short":true}]}]}
+      string: payload={"username":"Librato","text":"Alert test has triggered!","attachments":[{"fields":[{"title":"Source","value":"r101-dashboard-beta-production"},{"title":"router.service.perc95","value":"412","short":true}]},{"fields":[{"title":"Source","value":"r101-events-production"},{"title":"router.service.perc95","value":"446","short":true}]},{"fields":[{"title":"Source","value":"r101-marketing-production"},{"title":"router.service.perc95","value":"531","short":true}]},{"fields":[{"title":"Source","value":"r101-pdf-production"},{"title":"router.service.perc95","value":"1294","short":true}]}]}
     headers: {}
   response:
     status:

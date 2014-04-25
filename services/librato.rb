@@ -17,7 +17,7 @@ class Librato < Grape::API
         fields << { title: 'Source', value: source }
 
         violations.each do |violation|
-          fields << { title: violation.metric, value: violation.value, short: true }
+          fields << { title: violation.metric, value: violation.value.to_s, short: true }
         end
 
         { fields: fields }
